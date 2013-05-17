@@ -27,13 +27,13 @@ while (1) {
   sleep 3;
   my $last_shutdown = `last -x shutdown reboot mattn | head -1`;
   $last_shutdown = substr($last_shutdown, 39, 16);
-  warn "$year $last_shutdown";
+  #warn "$year $last_shutdown";
   my $dt = $parser->parse_datetime("$year $last_shutdown");
   my $diff = time - $dt->epoch;
   next if $diff < 0 || $diff > 10;
   warn "shutdown!";
 
-  my $msg = "isokaze がシャットダウンします!(テスト中)";
+  my $msg = "isokaze がシャットダウンします!";
   my $res = $ua->post('http://lingr.com/api/room/say', [], [
       room => 'computer_science',
       bot  => 'isokaze_shutdown_bot',
