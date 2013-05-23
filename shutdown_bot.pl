@@ -25,7 +25,7 @@ my $ua = Furl->new(agent => $0, timeout => 10);
 $ua->env_proxy;
 while (1) {
   sleep 3;
-  my $last_shutdown = `last -x shutdown reboot mattn | head -1`;
+  my $last_shutdown = `last -x shutdown reboot | head -1`;
   $last_shutdown = substr($last_shutdown, 39, 16);
   #warn "$year $last_shutdown";
   my $dt = $parser->parse_datetime("$year $last_shutdown");
